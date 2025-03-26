@@ -36,6 +36,36 @@
     --radius: 0.75rem;
   }
 
+  .dark {
+    --background: 240 10% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 246 80% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 8% 15%;
+    --secondary-foreground: 246 60% 85%;
+
+    --muted: 240 8% 15%;
+    --muted-foreground: 240 5% 64%;
+
+    --accent: 246 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 6% 18%;
+    --input: 240 6% 15%;
+    --ring: 246 80% 60%;
+  }
+
   * {
     @apply border-border;
   }
@@ -50,9 +80,17 @@
     @apply bg-white/80 backdrop-blur-lg border border-white/50 shadow-glass;
   }
 
+  .dark .glass {
+    @apply bg-gray-900/80 backdrop-blur-lg border border-gray-800/50 shadow-glass;
+  }
+
   /* Soft Neomorphism */
   .neomorph {
     @apply bg-secondary rounded-xl shadow-neo border-none;
+  }
+
+  .dark .neomorph {
+    @apply bg-secondary rounded-xl shadow-neo-dark border-none;
   }
 
   /* Minimal Pill */
@@ -69,6 +107,10 @@
     @apply content-[''] absolute w-0 h-0.5 bg-vyoma left-0 bottom-0 transition-all duration-300 ease-in-out;
   }
   
+  .dark .animated-underline::after {
+    @apply bg-vyoma-light;
+  }
+  
   .animated-underline:hover::after {
     @apply w-full;
   }
@@ -80,6 +122,10 @@
   
   .gradient-button::before {
     @apply content-[''] absolute inset-0 bg-gradient-to-r from-vyoma to-vyoma-dark opacity-0 transition-opacity duration-500 ease-in-out rounded-lg;
+  }
+  
+  .dark .gradient-button::before {
+    @apply bg-gradient-to-r from-vyoma-dark to-vyoma;
   }
   
   .gradient-button:hover::before {
@@ -139,4 +185,23 @@ code {
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 300ms, transform 300ms;
+}
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-12 px-4;
+  }
+  
+  h1 {
+    @apply text-3xl;
+  }
+  
+  h2 {
+    @apply text-2xl;
+  }
+  
+  .card-container {
+    @apply grid-cols-1;
+  }
 }

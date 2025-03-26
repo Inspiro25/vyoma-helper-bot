@@ -96,6 +96,10 @@ export default {
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" }
+        },
+        "path-animation": {
+          "0%": { strokeDashoffset: "100" },
+          "100%": { strokeDashoffset: "0" }
         }
       },
       animation: {
@@ -106,15 +110,20 @@ export default {
         "slide-up": "slide-up 0.5s ease-out",
         "slide-down": "slide-down 0.5s ease-out",
         "pulse-light": "pulse-light 2s infinite ease-in-out",
-        "float": "float 3s infinite ease-in-out"
+        "float": "float 3s infinite ease-in-out",
+        "path-draw": "path-animation 2s ease-in-out infinite alternate"
       },
       boxShadow: {
         "glass": "0 4px 30px rgba(0, 0, 0, 0.1)",
-        "neo": "5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff"
+        "neo": "5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff",
+        "neo-dark": "5px 5px 10px rgb(15, 15, 20), -5px -5px 10px rgb(35, 35, 40)"
       },
       backdropBlur: {
         "xs": "2px"
-      }
+      },
+      screens: {
+        "xs": "480px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
