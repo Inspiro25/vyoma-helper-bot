@@ -48,9 +48,9 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
           <BrowserRouter>
+            <Toaster />
+            <Sonner />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/features" element={<Features />} />
@@ -62,7 +62,6 @@ const App = () => {
               <Route path="/auth" element={
                 session ? <Navigate to="/" replace /> : <Auth />
               } />
-              {/* More routes will be added here */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
