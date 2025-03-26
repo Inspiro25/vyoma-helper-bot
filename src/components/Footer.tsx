@@ -1,15 +1,20 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
+import { useTheme } from "@/context/ThemeContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Footer = () => {
+  const { theme } = useTheme();
+  const isMobile = useIsMobile();
+  
   return (
-    <footer className="bg-white py-12 border-t border-border">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className={`${theme === 'dark' ? 'bg-gray-900 text-gray-200' : 'bg-white'} py-8 md:py-12 border-t border-border`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-vyoma to-vyoma-dark flex items-center justify-center">
+              <div className={`h-8 w-8 rounded-full ${theme === 'dark' ? 'bg-gradient-to-br from-vyoma-dark to-vyoma' : 'bg-gradient-to-br from-vyoma to-vyoma-dark'} flex items-center justify-center`}>
                 <span className="text-white font-semibold text-lg">V</span>
               </div>
               <span className="font-semibold text-xl tracking-tight">Vyoma</span>
@@ -36,81 +41,127 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
-            <h3 className="font-semibold mb-4">Features</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  AI Chatbot
-                </Link>
-              </li>
-              <li>
-                <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Code Assistant
-                </Link>
-              </li>
-              <li>
-                <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  MCQ Generator
-                </Link>
-              </li>
-              <li>
-                <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Vite App Builder
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Careers
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/cookies" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {!isMobile ? (
+            // Full footer for desktop
+            <>
+              <div>
+                <h3 className="font-semibold mb-4">Features</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      AI Chatbot
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Code Assistant
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      MCQ Generator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Vite App Builder
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Company</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/careers" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Careers
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-4">Legal</h3>
+                <ul className="space-y-2">
+                  <li>
+                    <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/cookies" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Cookie Policy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            // Simplified footer for mobile
+            <div className="col-span-1">
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <h3 className="font-semibold mb-4">Links</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        Features
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        About
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        Pricing
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-4">Legal</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        Terms
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        Privacy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         
-        <div className="mt-12 pt-8 border-t border-border text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-8 md:mt-12 pt-4 md:pt-8 border-t border-border text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
           <p>© {new Date().getFullYear()} Vyoma AI. All rights reserved.</p>
           <div className="mt-4 md:mt-0">
             Made with ❤️ for developers, educators, and learners.

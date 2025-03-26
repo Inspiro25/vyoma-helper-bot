@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 import Features from "./pages/Features";
 import About from "./pages/About";
 import Pricing from "./pages/Pricing";
+import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
@@ -55,6 +56,9 @@ const App = () => {
               <Route path="/features" element={<Features />} />
               <Route path="/about" element={<About />} />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/profile" element={
+                session ? <Profile /> : <Navigate to="/auth" replace />
+              } />
               <Route path="/auth" element={
                 session ? <Navigate to="/" replace /> : <Auth />
               } />
