@@ -142,7 +142,7 @@ const ChatInterface = () => {
           </Button>
         </div>
         <div className="mt-2 text-xs text-muted-foreground text-center">
-          <span>Free tier: 10 messages remaining today</span>
+          <span>Free tier: 50 messages remaining today</span>
         </div>
       </div>
     </div>
